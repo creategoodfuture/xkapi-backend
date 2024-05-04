@@ -1,7 +1,4 @@
 # SpringBoot 项目初始模板
-
-
-
 - Spring Boot 2.7.0（贼新）
 - Spring MVC
 - MySQL 驱动
