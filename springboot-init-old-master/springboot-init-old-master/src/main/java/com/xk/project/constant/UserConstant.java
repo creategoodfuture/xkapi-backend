@@ -3,7 +3,7 @@ package com.xk.project.constant;
 /**
  * 用户常量
  *
- * @author yupi
+ * @author 86132
  */
 public interface UserConstant {
 

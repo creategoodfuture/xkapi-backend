@@ -3,7 +3,7 @@ package com.xk.project.common;
 /**
  * 错误码
  *
- * @author yupi
+ * @author 86132
  */
 public enum ErrorCode {
 
