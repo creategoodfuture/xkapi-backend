@@ -2,22 +2,19 @@ package com.xk.project.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+
 import com.xk.project.annotation.AuthCheck;
 import com.xk.project.common.*;
+
 import com.xk.project.constant.CommonConstant;
 import com.xk.project.exception.BusinessException;
 import com.xk.project.model.dto.interfaceinfo.InterfaceInfoAddRequest;
 import com.xk.project.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
 import com.xk.project.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
-import com.xk.project.model.dto.post.PostAddRequest;
-import com.xk.project.model.dto.post.PostQueryRequest;
-import com.xk.project.model.dto.post.PostUpdateRequest;
 import com.xk.project.model.entity.InterfaceInfo;
-import com.xk.project.model.entity.Post;
 import com.xk.project.model.entity.User;
 import com.xk.project.model.enums.InterfaceInfoStatusEnum;
 import com.xk.project.service.InterfaceInfoService;
-import com.xk.project.service.PostService;
 import com.xk.project.service.UserService;
 import com.xk.xkapiclientsdk.client.XkapiClient;
 import lombok.extern.slf4j.Slf4j;
