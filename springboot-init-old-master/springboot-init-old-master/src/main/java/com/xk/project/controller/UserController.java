@@ -11,9 +11,10 @@ import com.xk.project.exception.BusinessException;
 import com.xk.project.model.dto.user.*;
 import com.xk.project.model.dto.*;
 import com.xk.project.model.dto.user.*;
-import com.xk.project.model.entity.User;
+
 import com.xk.project.model.vo.UserVO;
 import com.xk.project.service.UserService;
+import com.xk.xkapicommon.service.model.entity.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;

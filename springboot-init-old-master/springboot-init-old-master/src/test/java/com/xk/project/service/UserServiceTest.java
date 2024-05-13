@@ -1,6 +1,7 @@
 package com.xk.project.service;
 
-import com.xk.project.model.entity.User;
+
+import com.xk.xkapicommon.service.model.entity.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

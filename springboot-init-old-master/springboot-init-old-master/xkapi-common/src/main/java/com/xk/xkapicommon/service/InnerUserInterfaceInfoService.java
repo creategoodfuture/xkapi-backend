@@ -1,7 +1,8 @@
-package com.xk.project.service;
+package com.xk.xkapicommon.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
+
 import com.xk.xkapicommon.service.model.entity.UserInterfaceInfo;
 
 /**
@@ -9,11 +10,8 @@ import com.xk.xkapicommon.service.model.entity.UserInterfaceInfo;
 * @description 针对表【user_interface_info(用户调用接口关系)】的数据库操作Service
 * @createDate 2024-05-10 15:26:36
 */
-public interface UserInterfaceInfoService extends IService<UserInterfaceInfo> {
+public interface InnerUserInterfaceInfoService {
 
-
-
-    void validUserInterfaceInfo(UserInterfaceInfo userInterfaceInfo, boolean add);
 
 
 

@@ -1,4 +1,6 @@
-package com.xk.project.model.entity;
+package com.xk.xkapicommon.service.model.entity;
+
+
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;

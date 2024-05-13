@@ -9,7 +9,8 @@ import com.xk.project.constant.UserConstant;
 import com.xk.project.exception.BusinessException;
 import com.xk.project.mapper.UserMapper;
 import com.xk.project.service.UserService;
-import com.xk.project.model.entity.User;
+
+import com.xk.xkapicommon.service.model.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;

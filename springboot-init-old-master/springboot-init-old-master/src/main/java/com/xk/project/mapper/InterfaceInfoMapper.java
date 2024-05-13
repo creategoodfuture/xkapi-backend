@@ -1,7 +1,8 @@
 package com.xk.project.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.xk.project.model.entity.InterfaceInfo;
+
+import com.xk.xkapicommon.service.model.entity.InterfaceInfo;
 
 
 /**

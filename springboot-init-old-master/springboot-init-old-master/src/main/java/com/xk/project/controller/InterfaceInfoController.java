@@ -3,20 +3,24 @@ package com.xk.project.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
+import com.google.gson.Gson;
 import com.xk.project.annotation.AuthCheck;
 import com.xk.project.common.*;
 
 import com.xk.project.constant.CommonConstant;
 import com.xk.project.exception.BusinessException;
 import com.xk.project.model.dto.interfaceinfo.InterfaceInfoAddRequest;
+import com.xk.project.model.dto.interfaceinfo.InterfaceInfoInvokeRequest;
 import com.xk.project.model.dto.interfaceinfo.InterfaceInfoQueryRequest;
 import com.xk.project.model.dto.interfaceinfo.InterfaceInfoUpdateRequest;
-import com.xk.project.model.entity.InterfaceInfo;
-import com.xk.project.model.entity.User;
+
+
 import com.xk.project.model.enums.InterfaceInfoStatusEnum;
 import com.xk.project.service.InterfaceInfoService;
 import com.xk.project.service.UserService;
 import com.xk.xkapiclientsdk.client.XkapiClient;
+import com.xk.xkapicommon.service.model.entity.InterfaceInfo;
+import com.xk.xkapicommon.service.model.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -235,5 +239,31 @@ public class InterfaceInfoController {
         boolean result=interfaceInfoService.updateById(newInterfaceInfo);
         return ResultUtils.success(result);
 
+    }
+
+    @PostMapping("/invoke")
+    public BaseResponse<Object> invokeInterfaceInfo(@RequestBody InterfaceInfoInvokeRequest interfaceInfoInvokeRequest,
+                                                    HttpServletRequest request) {
+        if (interfaceInfoInvokeRequest == null || interfaceInfoInvokeRequest.getId() <= 0) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        long id = interfaceInfoInvokeRequest.getId();
+        String userRequestParams = interfaceInfoInvokeRequest.getUserRequestParams();
+        // 判断是否存在
+        InterfaceInfo oldInterfaceInfo = interfaceInfoService.getById(id);
+        if (oldInterfaceInfo == null) {
+            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+        }
+        if (oldInterfaceInfo.getStatus() == InterfaceInfoStatusEnum.OFFLINE.getValue()) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "接口已关闭");
+        }
+        User loginUser = userService.getLoginUser(request);
+        String accessKey = loginUser.getAccessKey();
+        String secretKey = loginUser.getSecretKey();
+        XkapiClient tempClient = new XkapiClient(accessKey, secretKey);
+        Gson gson = new Gson();
+        com.xk.xkapiclientsdk.model.User user = gson.fromJson(userRequestParams, com.xk.xkapiclientsdk.model.User.class);
+        String usernameByPost = tempClient.getUsernameByPost(user);
+        return ResultUtils.success(usernameByPost);
     }
 }

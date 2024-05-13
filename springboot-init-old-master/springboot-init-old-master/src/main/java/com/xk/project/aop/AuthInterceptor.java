@@ -4,8 +4,9 @@ import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.xk.project.annotation.AuthCheck;
 import com.xk.project.common.ErrorCode;
 import com.xk.project.exception.BusinessException;
-import com.xk.project.model.entity.User;
+
 import com.xk.project.service.UserService;
+import com.xk.xkapicommon.service.model.entity.User;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

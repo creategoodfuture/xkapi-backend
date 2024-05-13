@@ -1,7 +1,7 @@
 package com.xk.project.mapper;
 
-import generator.domain.UserInterfaceInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xk.xkapicommon.service.model.entity.UserInterfaceInfo;
 
 /**
 * @author 86132
